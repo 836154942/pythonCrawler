@@ -1,10 +1,13 @@
 # urllib的基本是使用
+
 import re
 import urllib
 
 # 熟悉urllib最基本的api
 from collections import deque
 from urllib import request
+
+import time
 
 
 def test1():
@@ -60,3 +63,7 @@ def search():
             if 'http' in x and x not in visited:
                 queue.append(x)
                 print(" ``````加入队列------> " + x)
+
+
+print(time.time())
+print(str(time.time()).replace(".", "") )

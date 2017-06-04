@@ -11,7 +11,7 @@ from gevent import monkey;
 # 这个文件里面是爬取一个网页的图片
 # 防止403伪造一个useragnet，
 Def_USer_Agent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36'
-Def_Pic_Dir = 'E:\pcdata\picturetest'  # 下载的文件夹
+Def_Pic_Dir = r'F:\pcimage'  # 下载的文件夹
 
 
 # 简答的爬取一个网页图片
@@ -32,7 +32,8 @@ def projectIndex():
 
 # 使用协程序去下载图片。同时 下载时候添加请求头，解决防盗链
 def baidutst():
-    url = "https://image.baidu.com/search/index?tn=baiduimage&ct=201326592&lm=-1&cl=2&ie=gbk&word=%B3%B5%CD%BC%C6%AC&fr=ala&ala=1&alatpl=adress&pos=0&hs=2&xthttps=111111"
+    # url = "http://hc666.com/htm/2017/5/21/p02/376558.html"
+    url = "http://www.jjjj98.com/htm/2017/5/21/p01/376472.html"
     req = urllib.request.Request(url)
     req.add_header('User-Agent', Def_USer_Agent)
     data = request.urlopen(req).read().decode("utf-8")
@@ -54,17 +55,17 @@ def fetch(imgurl, x):
     opener = request.build_opener()
     opener.addheaders = [('User - Agent', Def_USer_Agent)]
     request.install_opener(opener)
-    try:
-        urllib.request.urlretrieve(url=imgurl, filename=Def_Pic_Dir + '\%s.jpg' % x)
-    except:
-        pass
+    # try:
+    urllib.request.urlretrieve(url=imgurl, filename=Def_Pic_Dir + '\%s.jpg' % x)
+    # except:
+    #     pass
 
 
 def start():
     # 先删除目录已经存在的文件
-    files = os.listdir(Def_Pic_Dir)
-    for i in files:
-        os.remove(os.path.join(Def_Pic_Dir, i))
+    # files = os.listdir(Def_Pic_Dir)
+    # for i in files:
+    #     os.remove(os.path.join(Def_Pic_Dir, i))
 
     monkey.patch_all()
     baidutst()
